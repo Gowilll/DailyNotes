@@ -44,18 +44,21 @@ In[2]: import <TAB>
 
 # IPython shell中的快捷键
 ### 导航快捷键
+```
 Ctrl ＋ A（beginning of line） 将光标移到当前行的开始处
 Ctrl ＋ E（end of line）       将光标移到当前行的结尾处
 Ctrl ＋ B（backward）          将光标回退一个字符，左箭头键
 Ctrl ＋ F（forward）           将光标前进一个字符，右箭头键
+```
 ### 文档输入快捷键
+```
 Backspace    删除前一个字符
 Ctrl ＋ D 删除下一个字符
 Ctrl ＋ K 从光标处开始剪切至当前行的末尾
 Ctrl ＋ U 从当前行的开头剪切至光标处
 Ctrl ＋ Y 粘贴之前剪切的文本
 Ctrl ＋ T 交换前两个字符
-
+```
 
 
 
