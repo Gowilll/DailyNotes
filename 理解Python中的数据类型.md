@@ -21,8 +21,9 @@
 
 ---
 
-> 📌 **提示**：
-> 以上语法大多数在 GitHub、Typora、Obsidian 等编辑器中通用。建议作为模板放在每个 Markdown 文件的开头，便于速查和复习。
+- [换行说明](#换行说明github-中换行问题)
+- [Markdown 基础语法](#markdown-基础语法一览表)
+- [GitHub 特性](#github-markdown-独有功能)
 
 ---
 目录<br>
