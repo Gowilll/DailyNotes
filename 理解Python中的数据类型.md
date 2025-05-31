@@ -97,4 +97,19 @@ Numpy式的数组基本上包含一个指向连续数据块的指针。而Python
 ## Python中的固定类型数组
 > Python提供了几个将数据存储在高效的、固定类型的数据缓存中的选项。内置的数组（`array`）模块可用于创建统一类型的密集数组。
 
+```python
+In [1]: import array
+
+In [2]: L = list(range(10))
+
+In [3]: A = array.array('i', L) # 这里的‘i’是一个数据类型码，表示数据为整型。
+
+In [4]: A
+Out[4]: array('i', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+```
+更实用的是Numpy包中的`ndarray`对象。  
+Python的数组对象提供了数组型数据的有效存储，而Numpy为改数据提供了高效的操作。
+
+## 从Python列表创建数组
+
 
