@@ -43,7 +43,15 @@
 
 ---
 ## ★Python整型不仅仅是一个整型
-
+标准的Python实现是用C语言编写的，这意味着每一个Python对象都有一个巧妙设计的C语言结构体。这个结构体不仅包含其值，还包含其他信息。例如，当在Python中定义一个整形（x = 1000),x并不是“原生”整形，而是一个指针，指向一个C语言复合结构体，结构体里包含了一些值。
+```
+   struct _longobject {
+       long ob_refcnt;
+       PyTypt0bject *ob_type;
+       size_t ob_size;
+       long ob_digit[1];
+   };
+```
 
 
 
