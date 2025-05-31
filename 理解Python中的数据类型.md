@@ -190,9 +190,15 @@ Out[11]: array([1., 1., 1.])
 
 
 ```
-
-
-
+## Numpy标准数据类型
+> 当构建一个数组时，可以用一个字符串参数来指定数据类型。
+> ```python
+>np.zeros(10, dtype='int16')
+> ```
+> 或者使用相关的Numpy对象来指定
+> ```python
+> np.zeros(10, dtype=np.int16)
+> ```  
 
 
 
