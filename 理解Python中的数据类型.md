@@ -64,8 +64,29 @@
 ## Python列表不仅仅是一个列表
 > 试想一下：如果使用一个包含很多Python对象的Python数据结构，会发生什么？Python中标准可变多元素容器是列表。
 
+```python
+In [1]: L = list(range(10)) # 创建一个列表，输出整型
 
+In [2]: L
+Out[2]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+In [3]: type(L[0])
+Out[3]: int
+
+In [4]: L2 = [str(c) for c in L] # 将L2传递给c，且定义c为字符型
+
+In [5]: L2
+Out[5]: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+In [6]: type(L2[0])
+Out[6]: str
+
+In [7]: L3 = [True, "2", 3.0, 4] # 将布尔、字符、浮点、整型同放一个列表
+
+In [8]: [type(item) for item in L3]
+Out[8]: [bool, str, float, int]
+```
+以上是Python列表存放多类型对象的体现，为了获取这种灵活性
 
 
 
