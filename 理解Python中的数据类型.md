@@ -112,12 +112,27 @@ Python的数组对象提供了数组型数据的有效存储，而Numpy为改数
 
 ## 从Python列表创建数组
 + 用np别名导入NumPy的标准做法
-  ```python
-  
+```python
+  In [1]: import numpy as np
 
+In [2]: np.array([1, 4, 2, 5, 3])
+Out[2]: array([1, 4, 2, 5, 3])
 
+In [3]: np.array([3.14, 4, 2, 3]) ＃ 必须同一类型，向上转换成浮点型
+Out[3]: array([3.14, 4.  , 2.  , 3.  ])
 
+In [4]: np.array([1, 2, 3, 4], dtype=np.float32) # 使用dtype关键字规定数据类型
+Out[4]: array([1., 2., 3., 4.], dtype=float32)
 
+In [5]: np.array([range(i, i + 3) for i in [2, 4, 6]]) ＃ 使用列表的列表初始化多维数组
+Out[5]:
+array([[2, 3, 4], ＃ 内层的列表被当做二维数组的行。
+       [4, 5, 6],
+       [6, 7, 8]])
+```
+不同于Python列表，Numpy数组必须包含同一类型的数据。如果数据不匹配，Numpy将根据数据其类型提升规则进行向上转换。  
+如果希望设置数组的数据类型，可以使用`dtype`关键字  
+与总是作为一位序列的Pyton列表不同，Numpy数组可以是多维的。  
 
 
 
