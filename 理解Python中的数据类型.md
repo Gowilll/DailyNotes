@@ -52,7 +52,11 @@
        long ob_digit[1];
    };
 ```
-
+以上结构体包含4个重要部分：
+- ob_refcnt 引用计数，在Python中默默处理内存的分配和回收
+- ob_type 将变量的类型进行编码
+- ob_size 指定接下来的数据成员大小
+- ob_digit 包含我们希望Python变量表示的实际整型值
 
 
 
