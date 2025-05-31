@@ -198,7 +198,10 @@ Out[11]: array([1., 1., 1.])
 > 或者使用相关的Numpy对象来指定
 > ```python
 > np.zeros(10, dtype=np.int16)
-> ```  
+> ```
+
+NumPy标准数据类型
+
 
 
 
