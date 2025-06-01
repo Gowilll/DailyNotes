@@ -242,22 +242,113 @@ In [66]: print(x2)
 
 ```python
 
-In [79]: x2_sub_copy = x2[:2, :2].copy()
+In [79]: x2_sub_copy = x2[:2, :2].copy() # 使用copy()复制数组给x2_sub_copy
 
 In [80]: print(x2_sub_copy)
 [[99  1]
  [ 4  0]]
 
-In [81]: x2_sub_copy[0, 0] = 42
+In [81]: x2_sub_copy[0, 0] = 42 # 修改这个子数组，原始的数组不会发生改变
 
 In [82]: print(x2)
 [[99  1  3  7]
  [ 4  0  2  3]
  [ 0  0  6  9]]
 
-In [83]:
+```
 
-In [83]:
+## 数组的变形
+> 通过函数`reshape()`可以实现数组的变形
+
+```python
+In [83]: grid = np.arange(1, 10).reshape(3 3) # 将数字1到9放置在3x3的矩阵内
+
+In [84]: print(grid)
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+
+# 注意，如果希望该方法可行，那么原始数据的大小必须和变形后的数组大小一致。大多数情况下，reshape方法会返回原始数组的一个飞副本视图。
+# 将一个一维数组转变为二维的行或列的矩阵
+In [85]: x = np.array([1, 2, 3]) 
+
+In [86]: x.reshape((1, 3)) # 通过reshape获取行向量
+Out[86]: array([[1, 2, 3]])
+
+In [87]: x.reshape((3, 1)) # 通过reshape获取列向量
+Out[87]:
+array([[1],
+       [2],
+       [3]])
+# 上述更简单的操作是利用 np.newaxis 切片语言
+In [88]: x[np.newaxis, :] # 通过newaxis获取行向量
+Out[88]: array([[1, 2, 3]])
+
+In [89]: x[:,np.newaxis] # 通过newaxis获取列向量
+Out[89]:
+array([[1],
+       [2],
+       [3]])
+```
+> 注意，如果希望该方法可行，那么将原始数组的大小必须和变形后的数组的大小一样。在大多数情况下，reshape方法返回原始数组的一个非副本视图
+## 数组拼接和拆分
+> Numpy提供了将多个数组合并为一个，以及将一个数组拆分为多个数组的工具
+### a.数组的拼接
+> 在Numpy中，拼接或连接两个数组主要是由np.concatenat、np.vstack和np.hstack例程实现。
+> np.concatenate将数组元组或数组列表作为第一个参数，如下：
+```python
+
+In [90]: x = np.array([1, 2, 3])
+
+In [91]: y = np.array([3, 2, 1])
+
+In [92]: np.concatenate([x, y]) # 通过concatenate将两个数组拼接，参数是两数组
+Out[92]: array([1, 2, 3, 3, 2, 1])
+
+In [93]: z = np.array([99, 99, 99])
+
+In [94]: print(np.concatenate([x, y, z])) # 也可以一次性将多个数组拼接
+[ 1  2  3  3  2  1 99 99 99]
+
+# 也可以对二维数组进行拼接
+In [95]: grid = np.array([[1, 2, 3],
+    ...:                 [4, 5, 6]])
+
+In [96]: np.concatenate([grid, grid]) # 沿着第一个轴（行）拼接，从0开始索引
+Out[96]:
+array([[1, 2, 3],
+       [4, 5, 6],
+       [1, 2, 3],
+       [4, 5, 6]])
+
+In [97]: np.concatenate([grid, grid], axis=1) # 沿着第二个轴（按列）进行拼接，从0开始索引
+Out[97]:
+array([[1, 2, 3, 1, 2, 3],
+       [4, 5, 6, 4, 5, 6]])
+
+# 处理固定维度的数组时，使用np.vstack（垂直方向拼接）和np.hstack（水平方向拼接）函数会更简洁
+In [98]: np.vstack([x, grid]) # vstack按垂直方向（行）拼接数组
+Out[98]:
+array([[1, 2, 3],
+       [1, 2, 3],
+       [4, 5, 6]])
+
+In [99]: y = np.array([[99],
+    ...:              [99]])
+
+In [100]: np.hstack([grid, y]) # 按水平方向（列）拼接
+Out[100]:
+array([[ 1,  2,  3, 99],
+       [ 4,  5,  6, 99]])
+
+```
+
+> 对于更高维度的数组，np.dstack将沿着第三个轴（维度）拼接数组
+
+### b.数组的拆分
+
+```python
+n [83]:
 
 In [83]: grid = np.arange(1, 10).reshape(3 3)
 
@@ -380,44 +471,6 @@ In [111]: print(right)
  [14 15]]
 
 ```
-
-## 数组的变形
-> 通过函数`reshape()`可以实现数组的变形
-
-```python
-In [83]: grid = np.arange(1, 10).reshape(3 3) # 将数字1到9放置在3x3的矩阵内
-
-In [84]: print(grid)
-[[1 2 3]
- [4 5 6]
- [7 8 9]]
-
-In [85]: x = np.array([1, 2, 3])
-
-In [86]: x.reshape((1, 3))
-Out[86]: array([[1, 2, 3]])
-
-In [87]: x.reshape((3, 1))
-Out[87]:
-array([[1],
-       [2],
-       [3]])
-
-In [88]: x[np.newaxis, :]
-Out[88]: array([[1, 2, 3]])
-
-In [89]: x[:,np.newaxis]
-Out[89]:
-array([[1],
-       [2],
-       [3]])
-```
-> 注意，如果希望该方法可行，那么将原始数组的大小必须和变形后的数组的大小一样。在大多数情况下，reshape方法返回原始数组的一个非副本视图
-## 数组拼接和拆分
-> Numpy提供了将多个数组合并为一个，以及将一个数组拆分为多个数组的工具
-### a.数组的拼接
-
-### b.数组的拆分
 
 
 
