@@ -143,7 +143,7 @@ In [1]: import numpy as np
 In [2]: np.zeros(10, dtype=int) # np.zeros 创建一个长度为10值为0的整型数组
 Out[2]: array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-In [3]: np.ones((3, 5), dtype=float) # np.ones 创建一个3x3，值为1的浮点型数组
+In [3]: np.ones((3, 5), dtype=float) # np.ones 创建一个3x5，值为1的浮点型数组
 Out[3]:
 array([[1., 1., 1., 1., 1.],
        [1., 1., 1., 1., 1.],
@@ -202,6 +202,8 @@ Out[11]: array([1., 1., 1.])
 
 NumPy标准数据类型
 
+## 问题＆总结
+1. 在使用Numpy打印大型数据时
 
 
 
