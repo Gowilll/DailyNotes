@@ -56,7 +56,30 @@
 
 种子值：Numpy的随机数生成器可以设置一组种子值，以确保每次程序执行时都可以生成*同样的随机数组*
 
+```python
+In [1]: import numpy as np
 
+In [2]: rng = np.random.default_rng(seed=1701) # seed 设置随机种子数
+
+In [3]: x1 = rng.integers(10, size=6) # 一维数组
+
+In [4]: x2 = rng.integers(10, size=(3, 4)) # 二维数组
+
+In [5]: x3 = rng.integers(10, size=(3, 4, 5)) # 三维数组
+
+In [6]: print("x3 ndim: ", x3.ndim) # ndim 数组的维数
+x3 ndim:  3
+
+In [7]: print("x3 shape: ", x3.shape) # shape 数组每个维度的大小
+x3 shape:  (3, 4, 5)
+
+In [8]: print("x3 size: ", x3.size) # size数组的总大小
+x3 size:  60
+
+In [9]: print("dtype: ", x3.dtype) # dtype 每个元素的类型
+dtype:  int64
+
+```
 
 
 
