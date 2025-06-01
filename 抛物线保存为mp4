@@ -1,0 +1,44 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation, FFMpegWriter
+import matplotlib
+
+matplotlib.rcParams['font.family'] = ['DejaVu Sans']
+matplotlib.rcParams['axes.unicode_minus'] = False
+matplotlib.rcParams['animation.ffmpeg_path'] = '/usr/bin/ffmpeg'
+
+v0 = 20
+theta = np.radians(45)
+g = 9.8
+
+t_max = 2 * v0 * np.sin(theta) / g
+t_data = np.linspace(0, t_max, 100)
+x_data = v0 * np.cos(theta) * t_data
+y_data = v0 * np.sin(theta) * t_data - 0.5 * g * t_data**2
+
+fig, ax = plt.subplots()
+line, = ax.plot([], [], 'b-', label='Trajectory')
+point, = ax.plot([], [], 'ro', label='Current Position')
+ax.set_xlim(0, max(x_data) * 1.1)
+ax.set_ylim(0, max(y_data) * 1.1)
+ax.set_xlabel("x (m)")
+ax.set_ylabel("y (m)")
+ax.set_title("Projectile Motion Animation")
+ax.legend()
+
+def init():
+    line.set_data([], [])
+    point.set_data([], [])
+    return line, point
+
+def update(frame):
+    line.set_data(x_data[:frame], y_data[:frame])
+    point.set_data([x_data[frame-1]], [y_data[frame-1]])  # 注意这里加了[]
+    return line, point
+
+ani = FuncAnimation(fig, update, frames=len(t_data), init_func=init, blit=True)
+
+writer = FFMpegWriter(fps=25, codec='libx264', metadata=dict(artist='Demo'), bitrate=1000)
+ani.save("parabola.mp4", writer=writer)
+
+plt.show()
