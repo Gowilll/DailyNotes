@@ -240,6 +240,146 @@ In [66]: print(x2)
 ### d.创建数组的副本
 > 仅管数组视图有一些非常好的特性，但是有时候明确的复制数组里的数据或子数组也是非常有用的。可以简单的通过`copy()`方法来实现
 
+```python
+
+In [79]: x2_sub_copy = x2[:2, :2].copy()
+
+In [80]: print(x2_sub_copy)
+[[99  1]
+ [ 4  0]]
+
+In [81]: x2_sub_copy[0, 0] = 42
+
+In [82]: print(x2)
+[[99  1  3  7]
+ [ 4  0  2  3]
+ [ 0  0  6  9]]
+
+In [83]:
+
+In [83]:
+
+In [83]: grid = np.arange(1, 10).reshape(3 3)
+
+In [84]: print(grid)
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+
+In [85]: x = np.array([1, 2, 3])
+
+In [86]: x.reshape((1, 3))
+Out[86]: array([[1, 2, 3]])
+
+In [87]: x.reshape((3, 1))
+Out[87]:
+array([[1],
+       [2],
+       [3]])
+
+In [88]: x[np.newaxis, :]
+Out[88]: array([[1, 2, 3]])
+
+In [89]: x[:,np.newaxis]
+Out[89]:
+array([[1],
+       [2],
+       [3]])
+
+In [90]:
+
+In [90]:
+
+In [90]:
+
+In [90]: x = np.array([1, 2, 3])
+
+In [91]: y = np.array([3, 2, 1])
+
+In [92]: np.concatenate([x, y])
+Out[92]: array([1, 2, 3, 3, 2, 1])
+
+In [93]: z = np.array([99, 99, 99])
+
+In [94]: print(np.concatenate([x, y, z]))
+[ 1  2  3  3  2  1 99 99 99]
+
+In [95]: grid = np.array([[1, 2, 3],
+    ...:                 [4, 5, 6]])
+
+In [96]: np.concatenate([grid, grid])
+Out[96]:
+array([[1, 2, 3],
+       [4, 5, 6],
+       [1, 2, 3],
+       [4, 5, 6]])
+
+In [97]: np.concatenate([grid, grid], axis=1)
+Out[97]:
+array([[1, 2, 3, 1, 2, 3],
+       [4, 5, 6, 4, 5, 6]])
+
+In [98]: np.vstack([x, grid])
+Out[98]:
+array([[1, 2, 3],
+       [1, 2, 3],
+       [4, 5, 6]])
+
+In [99]: y = np.array([[99],
+    ...:              [99]])
+
+In [100]: np.hstack([grid, y])
+Out[100]:
+array([[ 1,  2,  3, 99],
+       [ 4,  5,  6, 99]])
+
+In [101]:
+
+In [101]:
+
+In [101]:
+
+In [101]: x = [1, 2, 3, 99, 99, 3, 2, 1]
+
+In [102]: x1, x2, x3 = np.split(x, [3, 5])
+
+In [103]: print(x1, x2, x3)
+[1 2 3] [99 99] [3 2 1]
+
+In [104]: grid = np.arange(16).reshape((4, 4))
+
+In [105]: grid
+Out[105]:
+array([[ 0,  1,  2,  3],
+       [ 4,  5,  6,  7],
+       [ 8,  9, 10, 11],
+       [12, 13, 14, 15]])
+
+In [106]: upper,lower = np.vsplit(grid, [2])
+
+In [107]: print(upper)
+[[0 1 2 3]
+ [4 5 6 7]]
+
+In [108]: print(lower)
+[[ 8  9 10 11]
+ [12 13 14 15]]
+
+In [109]: left, right = np.hsplit(grid, [2])
+
+In [110]: print(left)
+[[ 0  1]
+ [ 4  5]
+ [ 8  9]
+ [12 13]]
+
+In [111]: print(right)
+[[ 2  3]
+ [ 6  7]
+ [10 11]
+ [14 15]]
+
+```
 
 
 
