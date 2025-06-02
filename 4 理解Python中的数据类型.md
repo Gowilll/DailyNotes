@@ -203,7 +203,10 @@ Out[11]: array([1., 1., 1.])
 NumPy标准数据类型
 
 ## 问题＆总结
-1. 在使用Numpy打印大型数据时
+1. 在使用Numpy打印大型数据时，numpy默认为了避免输出过长，会自动省略数组内容。可通过手动完整显示
+   ```python
+   np.set_printoptions(threshold=np.inf)
+   ```
 
 
 
