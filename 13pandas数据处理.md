@@ -39,3 +39,18 @@
  [★ pandas的DataFrame对象](#pandas的DataFrame对象)  
  [★ pandas的Index对象](#pandas的Index对象)  
 ---
+> pandas是在Numpy基础上建立的新程序库，提供了一种高效的DataFrame数据结构。DataFrame本质上是一种带行标签和列标签、支持异构数据类型和缺失值的多维数组。
+> 查看pandas版本号
+> ```python
+> import pandas as pd
+> pd.__verson__
+> ```
+> pandas的别名是pd
+
+## pandas的Series对象  
+学习pandas先看3个基本数据结构：series、dataframe和indes。  
+先从导入标准Numpy和pandas开始：  
+```python
+import numpy as np
+import pandas as pd
+```
